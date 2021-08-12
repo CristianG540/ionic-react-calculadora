@@ -1,0 +1,11 @@
+#calculator-screen {
+  text-align: right;
+  background-color: #252525;
+  color: #fff;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+.native-textarea[disabled].sc-ion-textarea-md {
+  opacity: 1;
+}

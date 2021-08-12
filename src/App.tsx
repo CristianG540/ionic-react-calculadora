@@ -10,11 +10,16 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { swapVerticalOutline, triangle } from 'ionicons/icons';
+import {
+  swapVerticalOutline,
+  triangle,
+  calculatorOutline
+} from 'ionicons/icons';
 
 // Components
 import Home from './pages/Home';
 import { CounterTab } from './pages/CounterTab/CounterTab';
+import { CalculatorTab } from './pages/CalculatorTab/CalculatorTab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,7 +37,8 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/* Theme variables */
+/* Theme */
+import './theme/base.css';
 import './theme/variables.css';
 
 const App: FC = () => (
@@ -46,6 +52,9 @@ const App: FC = () => (
           <Route exact path="/counter-tab">
             <CounterTab />
           </Route>
+          <Route exact path="/calculator-tab">
+            <CalculatorTab />
+          </Route>
           <Route exact path="/">
             <Redirect to="/home-tab" />
           </Route>
@@ -58,6 +67,10 @@ const App: FC = () => (
           <IonTabButton tab="counter-tab" href="/counter-tab">
             <IonIcon icon={swapVerticalOutline} />
             <IonLabel>Counter</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="calculator-tab" href="/calculator-tab">
+            <IonIcon icon={calculatorOutline} />
+            <IonLabel>Calculator</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

@@ -17,20 +17,20 @@ export const Counter: FC<CounterProps> = ({
       <IonGrid>
         <IonRow className="ion-align-items-center">
           <IonCol>
-            <IonButton color="dark" onClick={onClickDecrementBtn}>
-              Reducir -
+            <IonButton size="small" color="dark" onClick={onClickDecrementBtn}>
+              Decrement -
             </IonButton>
           </IonCol>
           <IonCol className="ion-text-center">
             <span id="value">{value}</span>
           </IonCol>
           <IonCol>
-            <IonButton color="dark" onClick={onClickIncrementBtn}>
-              Incrementar +
+            <IonButton size="small" color="dark" onClick={onClickIncrementBtn}>
+              Increment +
             </IonButton>
           </IonCol>
         </IonRow>
-        <IonRow>
+        <IonRow className="ion-align-items-center">
           <IonCol>
             <IonInput
               type="number"
@@ -43,6 +43,7 @@ export const Counter: FC<CounterProps> = ({
           </IonCol>
           <IonCol>
             <IonButton
+              size="small"
               color="dark"
               onClick={() => onClickAddAmountBtn(incrementAmount)}
             >

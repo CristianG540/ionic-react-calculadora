@@ -1,14 +1,23 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+// Components
 import App from './App';
+// Store
+import { store } from './redux/configureStore';
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+const MOUNT_NODE = document.getElementById('root') as HTMLElement;
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StrictMode>,
+  MOUNT_NODE
 );
 
 // If you want your app to work offline and load faster, you can change

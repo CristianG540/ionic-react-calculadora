@@ -1,8 +1,59 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { IonButton, IonCol, IonGrid, IonRow, IonTextarea } from '@ionic/react';
+import { evaluate } from 'mathjs';
 import './Calculator.css';
 
-export const Calculator: FC = () => {
+export interface CalculatorProps {
+  onEvaluateValidResult: (screenValue: number) => void;
+}
+
+export const Calculator: FC<CalculatorProps> = ({ onEvaluateValidResult }) => {
+  const [screenValue, setScreenValue] = useState('0');
+  const [isChanged, setIsChanged] = useState(false);
+  const [wasEvaluated, setWasEvaluated] = useState(false);
+
+  const onClickBtnAction = (buttonValue: string) => {
+    if (buttonValue === 'AC') {
+      setScreenValue('0');
+      setIsChanged(false);
+    } else if (buttonValue === '=') {
+      try {
+        const newScreenValue: string = evaluate(screenValue).toString();
+
+        if (newScreenValue === 'Infinity') {
+          setIsChanged(false);
+        } else {
+          setIsChanged(true);
+          onEvaluateValidResult(parseFloat(newScreenValue));
+        }
+
+        setScreenValue(newScreenValue);
+        setWasEvaluated(true);
+      } catch (_) {
+        setScreenValue('Malformed expression');
+        setIsChanged(false);
+      }
+    } else if (wasEvaluated) {
+      const isAnOperator = !!['+', '/', '*', '-'].find(
+        (operator) => operator === buttonValue
+      );
+      const newScreenValue = isAnOperator
+        ? screenValue + buttonValue
+        : buttonValue;
+
+      setScreenValue(newScreenValue);
+      setIsChanged(true);
+      setWasEvaluated(false);
+    } else {
+      const newScreenValue = isChanged
+        ? screenValue + buttonValue
+        : buttonValue;
+
+      setScreenValue(newScreenValue);
+      setIsChanged(true);
+    }
+  };
+
   return (
     <div id="calculator">
       <IonGrid>
@@ -11,8 +62,7 @@ export const Calculator: FC = () => {
             <IonTextarea
               id="calculator-screen"
               disabled
-              value={'0'}
-              onIonChange={(e) => e.detail.value!}
+              value={screenValue}
             ></IonTextarea>
           </IonCol>
         </IonRow>
@@ -23,7 +73,7 @@ export const Calculator: FC = () => {
               expand="full"
               size="small"
               color="dark"
-              onClick={() => 'AC'}
+              onClick={() => onClickBtnAction('AC')}
             >
               AC
             </IonButton>
@@ -33,7 +83,7 @@ export const Calculator: FC = () => {
               expand="full"
               size="small"
               color="dark"
-              onClick={() => '+'}
+              onClick={() => onClickBtnAction('+')}
             >
               +
             </IonButton>
@@ -47,7 +97,7 @@ export const Calculator: FC = () => {
                 expand="full"
                 size="small"
                 color="dark"
-                onClick={() => text}
+                onClick={() => onClickBtnAction(text)}
               >
                 {text}
               </IonButton>
@@ -62,7 +112,7 @@ export const Calculator: FC = () => {
                 expand="full"
                 size="small"
                 color="dark"
-                onClick={() => text}
+                onClick={() => onClickBtnAction(text)}
               >
                 {text}
               </IonButton>
@@ -77,7 +127,7 @@ export const Calculator: FC = () => {
                 expand="full"
                 size="small"
                 color="dark"
-                onClick={() => text}
+                onClick={() => onClickBtnAction(text)}
               >
                 {text}
               </IonButton>
@@ -91,7 +141,7 @@ export const Calculator: FC = () => {
               expand="full"
               size="small"
               color="dark"
-              onClick={() => '0'}
+              onClick={() => onClickBtnAction('0')}
             >
               0
             </IonButton>
@@ -102,7 +152,7 @@ export const Calculator: FC = () => {
                 expand="full"
                 size="small"
                 color="dark"
-                onClick={() => text}
+                onClick={() => onClickBtnAction(text)}
               >
                 {text}
               </IonButton>

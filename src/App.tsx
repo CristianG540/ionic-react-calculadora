@@ -1,8 +1,20 @@
 import { FC } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import {
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { swapVerticalOutline, triangle } from 'ionicons/icons';
+
+// Components
 import Home from './pages/Home';
+import { CounterTab } from './pages/CounterTab/CounterTab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -26,14 +38,29 @@ import './theme/variables.css';
 const App: FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/home-tab">
+            <Home />
+          </Route>
+          <Route exact path="/counter-tab">
+            <CounterTab />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home-tab" />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home-tab" href="/home-tab">
+            <IonIcon icon={triangle} />
+            <IonLabel>Home</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="counter-tab" href="/counter-tab">
+            <IonIcon icon={swapVerticalOutline} />
+            <IonLabel>Counter</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );

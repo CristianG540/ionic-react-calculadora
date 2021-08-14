@@ -1,27 +1,29 @@
 import { FC } from 'react';
 import './ExploreContainer.css';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ContainerProps {}
+interface ContainerProps {
+  counterValue: number;
+  calculatorResult: number;
+}
 
-const ExploreContainer: FC<ContainerProps> = () => {
+const ExploreContainer: FC<ContainerProps> = ({
+  calculatorResult,
+  counterValue
+}) => {
   return (
     <div className="container">
-      <strong>Ready to create an app?</strong>
-      <p>
-        Start with Ionic{' '}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://ionicframework.com/docs/components"
-        >
-          UI Components
-        </a>
-      </p>
+      <strong>The app is ready</strong>
+
+      <ul>
+        <li>
+          <strong>Counter value: </strong> {counterValue}
+        </li>
+        <li>
+          <strong>Calculator result:</strong> {calculatorResult}
+        </li>
+      </ul>
     </div>
   );
 };
 
 export default ExploreContainer;
-
-console.log('🚀 ~ file: ExploreContainer.tsx ~ line 16 ~ ExploreContainer');

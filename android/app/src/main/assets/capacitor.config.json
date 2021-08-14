@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "calculadora-blank",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

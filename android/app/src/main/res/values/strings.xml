@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">calculadora-blank</string>
-    <string name="title_activity_main">calculadora-blank</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">calculadora-actividad2-ucn</string>
+    <string name="title_activity_main">calculadora-actividad2-ucn</string>
+    <string name="package_name">io.calculadora.actividad2.ucn</string>
+    <string name="custom_url_scheme">io.calculadora.actividad2.ucn</string>
 </resources>

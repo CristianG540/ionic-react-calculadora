@@ -6,6 +6,15 @@ interface ContainerProps {
   calculatorResult: number;
 }
 
+/**
+ * Este simple componente solo se encarfa de mostrar en pantalla los dos valores
+ * que se le envian en las propiedades, en este caso muestra en pantalla el
+ * valor de 'calculatorResult' y 'counterValue'
+ *
+ * @param {*} {calculatorResult, counterValue
+ * }
+ * @return {*}
+ */
 const ExploreContainer: FC<ContainerProps> = ({
   calculatorResult,
   counterValue

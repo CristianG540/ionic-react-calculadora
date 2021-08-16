@@ -1,3 +1,10 @@
+/**
+ * Este archivo se encarga de configurar y exportar el store global de la app
+ * ademas exporta los tipos para el store y la funcion dispatch.
+ * Para mas informacion sobre este archivo y sobre Redux y Redux toolkit visitar
+ * https://redux.js.org/introduction/getting-started
+ * https://redux-toolkit.js.org/introduction/getting-started
+ */
 import { configureStore } from '@reduxjs/toolkit';
 // Reducer
 import { rootReducer as reducer } from './root';

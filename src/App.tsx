@@ -41,6 +41,13 @@ import '@ionic/react/css/display.css';
 import './theme/base.css';
 import './theme/variables.css';
 
+/**
+ * Contenedor principal de la aplicacion, este se encarga del manejo de las
+ * rutas de la aplicacion mediante el componente de IonTabs
+ * Ionic React Router como libreria de ruteo
+ * mas info sobre Ionic React Router: https://ionicframework.com/docs/react/navigation
+ * mas info sobre IonTabs: https://ionicframework.com/docs/api/tabs
+ */
 const App: FC = () => (
   <IonApp>
     <IonReactRouter>

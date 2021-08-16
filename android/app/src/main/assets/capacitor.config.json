@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "calculadora-blank",
+  "appId": "io.calculadora.actividad2.ucn",
+  "appName": "calculadora-actividad2-ucn",
   "webDir": "build",
   "bundledWebRuntime": false
 }

@@ -8,7 +8,7 @@ import {
 } from '@ionic/react';
 
 // Components
-import ExploreContainer from '../components/ExploreContainer';
+import ExploreContainer from '../components/ExploreContainer/ExploreContainer';
 
 import './Home.css';
 

@@ -13,13 +13,15 @@ import { IonReactRouter } from '@ionic/react-router';
 import {
   swapVerticalOutline,
   triangle,
-  calculatorOutline
+  calculatorOutline,
+  albumsOutline
 } from 'ionicons/icons';
 
 // Components
 import Home from './pages/Home';
 import { CounterTab } from './pages/CounterTab/CounterTab';
 import { CalculatorTab } from './pages/CalculatorTab/CalculatorTab';
+import { SlidesTab } from './pages/SlidesTab/SlidesTab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -62,6 +64,9 @@ const App: FC = () => (
           <Route exact path="/calculator-tab">
             <CalculatorTab />
           </Route>
+          <Route exact path="/slides-tab">
+            <SlidesTab />
+          </Route>
           <Route exact path="/">
             <Redirect to="/home-tab" />
           </Route>
@@ -78,6 +83,10 @@ const App: FC = () => (
           <IonTabButton tab="calculator-tab" href="/calculator-tab">
             <IonIcon icon={calculatorOutline} />
             <IonLabel>Calculator</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="slides-tab" href="/slides-tab">
+            <IonIcon icon={albumsOutline} />
+            <IonLabel>Slides</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
